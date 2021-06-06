@@ -1032,7 +1032,6 @@ let maplocalleader=' '
 " === vim-calendar
 " ===
 source ~/.cache/calendar.vim/credentials.vim
-"source ~/.cache/calendar.vim/credentials.vim
 noremap \c :Calendar -position=here<CR>
 noremap \\ :Calendar -view=clock -position=here<CR>
 let g:calendar_google_calendar = 1
