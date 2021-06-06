@@ -363,9 +363,10 @@ func! CompileRunGcc()
 	elseif &filetype == 'sh'
 		:!time bash %
 	elseif &filetype == 'python'
+		"exec '!python' shellescape(@%, 1)
 		set splitbelow
 		:sp
-		:term python3 %
+		:term python %
 	elseif &filetype == 'html'
 		silent! exec "!".g:mkdp_browser." % &"
 	elseif &filetype == 'markdown'
@@ -733,12 +734,12 @@ function! s:cocActionsOpenFromSelected(type) abort
   execute 'CocCommand actions.open ' . a:type
 endfunction
 xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>aw  <Plug>(coc-codeaction-selected)w
 " coctodolist
+nmap <leader>aw  <Plug>(coc-codeaction-selected)w
 " nnoremap <leader>tn :CocCommand todolist.create<CR>
 " nnoremap <leader>tl :CocList todolist<CR>
-" nnoremap <leader>tu :CocCommand todolist.download<CR>:CocCommand todolist.upload<CR>
 " coc-tasks
+" nnoremap <leader>tu :CocCommand todolist.download<CR>:CocCommand todolist.upload<CR>
 noremap <silent> <leader>ts :CocList tasks<CR>
 " coc-snippets
 imap <C-l> <Plug>(coc-snippets-expand)
@@ -1030,7 +1031,9 @@ let maplocalleader=' '
 " ===
 " === vim-calendar
 " ===
-"noremap \c :Calendar -position=here<CR>
+source ~/.cache/calendar.vim/credentials.vim
+"source ~/.cache/calendar.vim/credentials.vim
+noremap \c :Calendar -position=here<CR>
 noremap \\ :Calendar -view=clock -position=here<CR>
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
@@ -1045,13 +1048,11 @@ augroup calendar-mappings
 	autocmd FileType calendar nmap <buffer> <c-h> <Plug>(calendar_move_left)
 	autocmd FileType calendar nmap <buffer> <c-j> <Plug>(calendar_move_down)
 	autocmd FileType calendar nmap <buffer> <c-l> <Plug>(calendar_move_right)
-	autocmd FileType calendar nmap <buffer> k <Plug>(calendar_start_insert)
-	autocmd FileType calendar nmap <buffer> K <Plug>(calendar_start_insert_head)
+	autocmd FileType calendar nmap <buffer> i <Plug>(calendar_start_insert)
+	autocmd FileType calendar nmap <buffer> I <Plug>(calendar_start_insert_head)
 	" unmap <C-n>, <C-p> for other plugins
 	autocmd FileType calendar nunmap <buffer> <C-n>
 	autocmd FileType calendar nunmap <buffer> <C-p>
-augroup END
-
 
 " ===
 " === vim-go
