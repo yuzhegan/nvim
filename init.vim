@@ -768,8 +768,8 @@ set completeopt-=preview
 autocmd completedone * if !pumvisible() | pclose | endif
 set belloff+=ctrlg   
 let g:kite_documentation_continual=0
-let g:kite_previous_placeholder = '<c-h>'
-let g:kite_next_placeholder = '<c-l>'
+let g:kite_previous_placeholder = '<c-k>'
+let g:kite_next_placeholder = '<c-j>'
 nmap <silent> <buffer> gt <Plug>(kite-docs)
 
 
