@@ -751,6 +751,28 @@ imap <C-e> <Plug>(coc-snippets-expand-jump)
 let g:snips_author = 'yuzhe'
 autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 
+"=======
+"kite设置"
+"=============
+"禁用kite自动补全
+let g:kite_completions=0
+"let g:kite_snippets=0
+ "All the languages Kite supports
+let g:kite_supported_languages = ['*']
+"退出摘要
+let g:kite_tab_complete=1
+"set completeopt+=menuone
+set completeopt-=menu
+set completeopt-=noinsert
+set completeopt-=preview
+autocmd completedone * if !pumvisible() | pclose | endif
+set belloff+=ctrlg   
+let g:kite_documentation_continual=0
+let g:kite_previous_placeholder = '<c-h>'
+let g:kite_next_placeholder = '<c-l>'
+nmap <silent> <buffer> gt <Plug>(kite-docs)
+
+
 
 " ===
 " === vim-instant-markdown
