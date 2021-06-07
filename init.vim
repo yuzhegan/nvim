@@ -200,7 +200,7 @@ noremap <silent> <LEADER>o za
 
 
 
-source ~/.config/nvim/cursor.vim
+"source ~/.config/nvim/cursor.vim
 
 "If you use Qwerty keyboard, uncomment the next line.
 "source $XDG_CONFIG_HOME/nvim/cursor_for_qwerty.vim
@@ -564,9 +564,9 @@ Plug 'skywind3000/asyncrun.vim'
 "注释插件
 Plug 'preservim/nerdcommenter' 
 
-" Vim Applications
-Plug 'itchyny/calendar.vim'
-"Plug 'hotoo/calendar-vim'
+" Vim Applications can not use together
+"Plug 'itchyny/calendar.vim'
+Plug 'hotoo/calendar-vim'
 
 " Other visual enhancement
 Plug 'luochen1990/rainbow'
@@ -1080,23 +1080,20 @@ augroup calendar-mappings
 "  << calendar-vim >>
 " --------------------------------------------------------------------------
 let g:calendar_list = [
-	"\   {'name': 'works', 'path': '\文档\notes\daily\tasks', 'ext': 'md'},
-		\   {'name': 'Tasks', 'path': '~/.config/nvim/notes/daily/tasks', 'ext': 'md'},
-		\   {'name': 'Diary', 'path': '~/.config/nvim/notes/daily/diary', 'ext': 'md'},
-\ ]
-let g:calendar_datetime = 'title'
+		\ {'name': 'works', 'path': '~/.config/nvim/notes/daily/work', 'ext': 'md'},
+		\ {'name': 'Tasks', 'path': '~/.config/nvim/notes/daily/tasks', 'ext': 'md'},
+		\ {'name': 'Diary', 'path': '~/.config/nvim/notes/daily/diary', 'ext': 'md'},
+		\]
+let g:calendar_focus_today = 1
+let g:calendar_navi = 'both'
+let g:calendar_mark = 'right'
+let g:calendar_navi_label = 'Prev,Today,Next'
+let g:calendar_monday = 1
 let g:calendar_weeknm = 1 " WK01
-let g:calendar_weeknm = 2 " WK 1
-let g:calendar_weeknm = 3 " KW01
-let g:calendar_weeknm = 4 " KW 1
-let g:calendar_current_idx = 1
-let g:calendar_monday = 1           " 以星期一为开始
-let g:calendar_focus_today = 1      " 光标在当天的日期上
-let g:calendar_mark = 'left-fit' "可以让*和数字可靠近
-let g:calendar_mark = 'right' "上面设置后在昨天写日志，修改成right正常
-let g:calendar_mruler = '一月,二月,三月,四月,五月,六月,七月,八月,九月,十月,十一月,十二月'     " 中文，可自行修改
-let g:calendar_wruler = '日 一 二 三 四 五 六'
-let g:calendar_navi_label = '往前,今日,往后'
+let g:calendar_weeknm = 2 " WK01
+let g:calendar_weeknm = 3 " WK01
+let g:calendar_weeknm = 4 " WK01
+let g:calendar_datetime = 'title'
 
 noremap ca :Calendar<CR>              " 快捷键，默认 <leader>cal,水平方向：<leader>caL
 
