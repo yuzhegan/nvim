@@ -565,8 +565,8 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'preservim/nerdcommenter' 
 
 " Vim Applications can not use together
-"Plug 'itchyny/calendar.vim'
-Plug 'hotoo/calendar-vim'
+Plug 'itchyny/calendar.vim'
+"Plug 'mattn/calendar-vim'
 
 " Other visual enhancement
 Plug 'luochen1990/rainbow'
@@ -947,19 +947,19 @@ vmap <C-/>   <Plug>NERDCommenterToggle<CR>gv
 " ===
 " === vim-visual-multi
 " ===
-"let g:VM_theme             = 'iceblue'
-"let g:VM_default_mappings = 0
+let g:VM_theme             = 'iceblue'
+let g:VM_default_mappings = 0
 let g:VM_leader                     = {'default': ',', 'visual': ',', 'buffer': ','}
 let g:VM_maps                       = {}
 let g:VM_custom_motions             = {'n': 'h', 'i': 'l', 'u': 'k', 'e': 'j', 'N': '0', 'I': '$', 'h': 'e'}
-let g:VM_maps['i']                  = 'k'
-let g:VM_maps['I']                  = 'K'
-let g:VM_maps['Find Under']         = '<C-k>'
-let g:VM_maps['Find Subword Under'] = '<C-k>'
-let g:VM_maps['Find Next']          = ''
-let g:VM_maps['Find Prev']          = ''
+"let g:VM_maps['i']                  = 'k'
+"let g:VM_maps['I']                  = 'K'
+"let g:VM_maps['Find Under']         = '<C-k>'
+"let g:VM_maps['Find Subword Under'] = '<C-k>'
+"let g:VM_maps['Find Next']          = ''
+"let g:VM_maps['Find Prev']          = ''
 let g:VM_maps['Remove Region']      = 'q'
-let g:VM_maps['Skip Region']        = '<c-n>'
+let g:VM_maps['Skip Region']        = '<c-s>'
 let g:VM_maps["Undo"]               = 'l'
 let g:VM_maps["Redo"]               = '<C-r>'
 
@@ -1079,15 +1079,22 @@ augroup calendar-mappings
 " -----------------------------------------------------------------------------
 "  << calendar-vim >>
 " --------------------------------------------------------------------------
-let g:calendar_list = [
-		\ {'name': 'works', 'path': '~/.config/nvim/notes/daily/work', 'ext': 'md'},
-		\ {'name': 'Tasks', 'path': '~/.config/nvim/notes/daily/tasks', 'ext': 'md'},
-		\ {'name': 'Diary', 'path': '~/.config/nvim/notes/daily/diary', 'ext': 'md'},
-		\]
+"let g:calendar_list = [
+		""\ {'name': 'works', 'path': '~/.config/nvim/notes/daily/work', 'ext': 'md'},
+		"\ {'name': 'Tasks', 'path': '~/.config/nvim/notes/daily/tasks', 'ext': 'md'},
+		"\ {'name': 'Diary', 'path': '~/.config/nvim/notes/daily/diary', 'ext': 'md'},
+		"\]
+
+let g:calendar_diary = "~/.config/nvim/notes"  " 设置日记的存储路径
+let g:calendar_monday = 1           " 以星期一为开始
+let g:calendar_focus_today = 1      " 光标在当天的日期上
+"let g:calendar_mark = 'left-fit' "可以让*和数字可靠近
+let g:calendar_mark = 'right' "上面设置后在昨天写日志，修改成right正常
+let g:calendar_mruler = '一月,二月,三月,四月,五月,六月,七月,八月,九月,十月,十一月,十二月'     " 中文，可自行修改
+let g:calendar_wruler = '日 一 二 三 四 五 六'
+let g:calendar_navi_label = '往前,今日,往后'
 let g:calendar_focus_today = 1
 let g:calendar_navi = 'both'
-let g:calendar_mark = 'right'
-let g:calendar_navi_label = 'Prev,Today,Next'
 let g:calendar_monday = 1
 let g:calendar_weeknm = 1 " WK01
 let g:calendar_weeknm = 2 " WK01
