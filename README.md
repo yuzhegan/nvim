@@ -75,7 +75,7 @@ Please **DO NOT** just copy this configuration folder without really looking at 
 ## After Installation, You Need To
 - Install `pip`, and do `pip install --user pynvim`
 - Install `pip3`, and do `pip3 install --user pynvim`
-- Install `node`, and do `npm install -g neovim`
+- Install `node`, and do `npm install -g neovim`(`sudo pacman -S neovim-git` )
 - Install nerd-fonts (actually it's optional but it looks real good)
 
 ## After Installation, You Might Want To
@@ -103,7 +103,7 @@ Please **DO NOT** just copy this configuration folder without really looking at 
 ## Keyboard Shortcuts
 ### 1 Basic Editor Features
 #### 1.1 The Most Basics
-**`k`** : switchs to **`INSERT`** : mode (same as key `i` in vanilla vim)
+*~~`k`** : switchs to **`INSERT`** : mode (same as key `i` in vanilla vim)~~ <++>*
 
 **`Q`** : quits current vim window (same as command `:q` in vanilla vim)
 
@@ -111,22 +111,22 @@ Please **DO NOT** just copy this configuration folder without really looking at 
 
 **_IMPORTANT_**
 
-  Since the `i` key has been mapped to `k`, every command (combination) that involves `i` should use `k` instead (for example, `ciw` should be `ckw`).
+~~Since the `i` key has been mapped to `k`, every command (combination) that involves `i` should use `k` instead (for example, `ciw` should be `ckw`).~~   
 
 #### 1.2 Remapped Cursor Movement
 | Shortcut   | Action                                                    | Equivalent |
 |------------|-----------------------------------------------------------|------------|
-| `u`        | Cursor up a terminal line                                 | `k`        |
-| `e`        | Cursor down a terminal line                               | `j`        |
-| `n`        | Cursor left                                               | `h`        |
-| `i`        | Cursor right                                              | `l`        |
-| `U`        | Cursor up 5 terminal lines                                | `5k`       |
-| `E`        | Cursor down 5 terminal lines                              | `5j`       |
-| `N`        | Cursor to the start of the line                           | `0`        |
-| `I`        | Cursor to the end of the line                             | `$`        |
+|            | Cursor up a terminal line                                 | `k`        |
+|            | Cursor down a terminal line                               | `j`        |
+|            | Cursor left                                               | `h`        |
+|            | Cursor right                                              | `l`        |
+| `K`        | Cursor up 5 terminal lines                                | `5k`       |
+| `J`        | Cursor down 5 terminal lines                              | `5j`       |
+| `H`        | Cursor to the start of the line                           | `0`        |
+| `L`        | Cursor to the end of the line                             | `$`        |
 | `Ctrl` `u` | Move the view port up 5 lines without moving the cursor   | `Ctrl` `y` |
 | `Ctrl` `e` | Move the view port down 5 lines without moving the cursor | `Ctrl` `e` |
-| `h`        | Move to the end of this word                              | `e`        |
+|            | Move to the end of this word                              | `e`        |
 | `W`        | Move cursor five words forward                            | `5w`       |
 | `B`        | Move cursor five words forward                            | `5b`       |
 
@@ -151,7 +151,7 @@ Please **DO NOT** just copy this configuration folder without really looking at 
 | `SPACE` `s` `c` | Toggle spell suggestion a                      |
 | `SPACE` `d` `w` | Find adjacent duplicated word                  |
 | `SPACE` `t` `t` | Convert every 4 Spaces to a tab                |
-| `SPACE` `o`     | Fold                                           |
+| `SPACE` `o`     | Fold                                       |
 | `SPACE` `-`     | Previous quick-fix position                    |
 | `SPACE` `+`     | Next quick-fix position                        |
 | `\` `p`         | Show the path of the current file              |
@@ -165,12 +165,12 @@ Please **DO NOT** just copy this configuration folder without really looking at 
 
 ### 2 Window Management
 #### 2.1 Creating Window Through Split Screen
-| Shortcut    | Action                                                                      |
+| Shortcut    | Action
 |-------------|-----------------------------------------------------------------------------|
-| `s` `u`     | Create a new horizontal split screen and place it above the current window  |
-| `s` `e`     | Create a new horizontal split screen and place it below the current window  |
-| `s` `n`     | Create a new vertical split screen and place it left to the current window  |
-| `s` `i`     | Create a new vertical split screen and place it right to the current window |
+| `s` `k`     | Create a new horizontal split screen and place it above the current window  |
+| `s` `j`     | Create a new horizontal split screen and place it below the current window  |
+| `s` `h`     | Create a new vertical split screen and place it left to the current window  |
+| `s` `l`     | Create a new vertical split screen and place it right to the current window |
 | `s` `v`     | Set the two splits to be vertical                                           |
 | `s` `h`     | Set the two splits to be horizontal                                         |
 | `s` `r` `v` | Rotate splits and arrange splits vertically                                 |
@@ -179,11 +179,11 @@ Please **DO NOT** just copy this configuration folder without really looking at 
 #### 2.2 Moving the Cursor Between Different Windows
 | Shortcut      | Action                         |
 |---------------|--------------------------------|
-| `SPACE` + `w` | Move cursor to the next window |
-| `SPACE` + `n` | Move cursor one window left    |
-| `SPACE` + `i` | Move cursor one window right   |
-| `SPACE` + `u` | Move cursor one window up      |
-| `SPACE` + `e` | Move cursor one window down    |
+| `Alt` + `w` | Move cursor to the next window |
+| `Alt` + `h` | Move cursor one window left    |
+| `Alt` + `l` | Move cursor one window right   |
+| `Alt` + `k` | Move cursor one window up      |
+| `Alt` + `j` | Move cursor one window down    |
 
 #### 2.3 Resizing Different Windows
 Use the arrow keys to resize the current window.
@@ -197,11 +197,13 @@ Use the arrow keys to resize the current window.
 ### 3 Tab Management
 | Shortcut    | Action           |
 |-------------|------------------|
-| `t` `u`     | Create a new tab |
-| `t` `n`     | Go one tab left  |
-| `t` `i`     | Go One tab right |
-| `t` `m` `n` | Move tab left    |
-| `t` `m` `i` | Move tab right   |
+| `t` `n`     | Create a new tab |
+| `t` `h`     | Go one tab left  |
+| `t` `l`     | Go One tab right |
+| `t` `k`     | Go One tab up    |
+| `t` `j`     | Go One tab down  |
+| `t` `m` `h` | Move tab left    |
+| `t` `m` `l` | Move tab right   |
 
 ### 4 Terminal Keyboard Shortcuts
 | Shortcut    | Action                                                      |
@@ -226,8 +228,8 @@ Use the arrow keys to resize the current window.
 | Shortcut   | Action                                           |
 |------------|--------------------------------------------------|
 | `Ctrl` `e` | Expand a snippet                                 |
-| `Ctrl` `n` | (in snippet) Previous Cursor position in snippet |
-| `Ctrl` `e` | (in snippet) Next Cursor position in snippet     |
+| `Ctrl` `k` | (in snippet) Previous Cursor position in snippet |
+| `Ctrl` `j` | (in snippet) Next Cursor position in snippet     |
 
 ![GIF Demo](https://raw.github.com/SirVer/ultisnips/master/doc/demo.gif)
 
@@ -258,8 +260,8 @@ And Within rnvimr (ranger), you can:
 | Shortcut   | Action             |
 |------------|--------------------|
 | `Ctrl` `p` | **FZF Files**      |
-| `Ctrl` `u` | Move up 1 item     |
-| `Ctrl` `e` | Move down 1 item   |
+| `Ctrl` `k` | Move up 1 item     |
+| `Ctrl` `j` | Move down 1 item   |
 | `Ctrl` `w` | FZF Buffers        |
 | `Ctrl` `f` | FZF Files' Content |
 | `Ctrl` `h` | FZF Recent Files   |
@@ -288,15 +290,15 @@ See `:help table-mode.txt` for more.
 | Shortcut      | Action        |
 |---------------|---------------|
 | `Shift` + `L` | Open Undotree |
-| `u`           | Newer Version |
-| `e`           | Older Version |
+| `k`           | Newer Version |
+| `j`           | Older Version |
 
 <img alt="Png" src="https://camo.githubusercontent.com/56430626a5444ea2f0249d71f9288775277c7f5d/68747470733a2f2f73697465732e676f6f676c652e636f6d2f736974652f6d6262696c6c2f756e646f747265655f6e65772e706e67" width="60%" />
 
 #### [vim-visual-multi](https://github.com/mg979/vim-visual-multi)
 | Shortcut   | Action                                           |
 |------------|--------------------------------------------------|
-| `Ctrl`+`k` | **Select next key (multiple cursors)**           |
+| `Ctrl`+`n` | **Select next key (multiple cursors)**           |
 | `q`        | **Deselect the current keys (multiple cursors)** |
 | `-`        | Select the previous key                          |
 | `=`        | Select the next key                              |
@@ -362,7 +364,7 @@ Press `SPACE` `f` `r` to search in cwd.
 #### [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
 | Shortcut        | Action                            |
 |-----------------|-----------------------------------|
-| `H`             | **Show git hunk at current line** |
+| `G`             | **Show git hunk at current line** |
 | `SPACE` `g` `-` | Go to previous git hunk           |
 | `SPACE` `g` `+` | Go to next git hunk               |
 | `SPACE` `g` `f` | Fold everything except hunks      |
