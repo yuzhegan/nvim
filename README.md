@@ -227,9 +227,9 @@ Use the arrow keys to resize the current window.
 #### [coc-snippets](https://github.com/neoclide/coc-snippets)
 | Shortcut   | Action                                           |
 |------------|--------------------------------------------------|
-| `Ctrl` `e` | Expand a snippet                                 |
-| `Ctrl` `k` | (in snippet) Previous Cursor position in snippet |
-| `Ctrl` `j` | (in snippet) Next Cursor position in snippet     |
+| `Ctrl` `w` | Expand a snippet                                 |
+| `Ctrl` `n` | (in snippet) Previous Cursor position in snippet |
+| `Ctrl` `w` | (in snippet) Next Cursor position in snippet     |
 
 ![GIF Demo](https://raw.github.com/SirVer/ultisnips/master/doc/demo.gif)
 
@@ -364,7 +364,7 @@ Press `SPACE` `f` `r` to search in cwd.
 #### [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
 | Shortcut        | Action                            |
 |-----------------|-----------------------------------|
-| `G`             | **Show git hunk at current line** |
+| `gh`             | **Show git hunk at current line** |
 | `SPACE` `g` `-` | Go to previous git hunk           |
 | `SPACE` `g` `+` | Go to next git hunk               |
 | `SPACE` `g` `f` | Fold everything except hunks      |

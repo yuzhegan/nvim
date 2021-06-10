@@ -642,7 +642,7 @@ let g:gitgutter_sign_removed_first_line = '▔'
 let g:gitgutter_sign_modified_removed = '▒'
 " autocmd BufWritePost * GitGutter
 nnoremap <LEADER>gf :GitGutterFold<CR>
-nnoremap gg :GitGutterPreviewHunk<CR>
+nnoremap gh :GitGutterPreviewHunk<CR>
 nnoremap gi :GitGutterPreviewHunk<CR>
 nnoremap <LEADER>g- :GitGutterPrevHunk<CR>
 nnoremap <LEADER>g= :GitGutterNextHunk<CR>
@@ -744,9 +744,9 @@ nmap <leader>aw  <Plug>(coc-codeaction-selected)w
 " nnoremap <leader>tu :CocCommand todolist.download<CR>:CocCommand todolist.upload<CR>
 noremap <silent> <leader>ts :CocList tasks<CR>
 " coc-snippets
-imap <C-l> <Plug>(coc-snippets-expand)
-vmap <C-e> <Plug>(coc-snippets-select)
-let g:coc_snippet_next = '<c-e>'
+imap <C-w> <Plug>(coc-snippets-expand)
+vmap <C-w> <Plug>(coc-snippets-select)
+let g:coc_snippet_next = '<c-w>'
 let g:coc_snippet_prev = '<c-n>'
 imap <C-e> <Plug>(coc-snippets-expand-jump)
 let g:snips_author = 'yuzhe'
@@ -762,16 +762,20 @@ let g:kite_completions=0
 let g:kite_supported_languages = ['*']
 "退出摘要
 let g:kite_tab_complete=1
-"set completeopt+=menuone
+set completeopt+=menuone
+set completeopt+=noselect
 set completeopt-=menu
-set completeopt-=noinsert
-set completeopt-=preview
+"set completeopt-=noinsert
+set completeopt+=preview
 autocmd completedone * if !pumvisible() | pclose | endif
 set belloff+=ctrlg   
 let g:kite_documentation_continual=0
 let g:kite_previous_placeholder = '<c-k>'
 let g:kite_next_placeholder = '<c-j>'
-nmap <silent> <buffer> gt <Plug>(kite-docs)
+nmap <silent> <buffer> gk <Plug>(kite-docs)
+set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
+set laststatus=2  " always display the status line
+
 
 
 
