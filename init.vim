@@ -770,8 +770,8 @@ set completeopt+=preview
 autocmd completedone * if !pumvisible() | pclose | endif
 set belloff+=ctrlg   
 let g:kite_documentation_continual=0
-let g:kite_previous_placeholder = '<c-k>'
-let g:kite_next_placeholder = '<c-j>'
+let g:kite_previous_placeholder = '<c-p>'
+let g:kite_next_placeholder = '<c-n>'
 nmap <silent> <buffer> gk <Plug>(kite-docs)
 set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
 set laststatus=2  " always display the status line
@@ -952,21 +952,21 @@ vmap <C-/>   <Plug>NERDCommenterToggle<CR>gv
 " ===
 " === vim-visual-multi
 " ===
-let g:VM_theme             = 'iceblue'
-let g:VM_default_mappings = 0
-let g:VM_leader                     = {'default': ',', 'visual': ',', 'buffer': ','}
-let g:VM_maps                       = {}
-let g:VM_custom_motions             = {'n': 'h', 'i': 'l', 'u': 'k', 'e': 'j', 'N': '0', 'I': '$', 'h': 'e'}
+" let g:VM_theme             = 'iceblue'
+" let g:VM_default_mappings = 0
+"let g:VM_leader                     = {'default': ',', 'visual': ',', 'buffer': ','}
+"let g:VM_maps                       = {}
+"let g:VM_custom_motions             = {'n': 'h', 'i': 'l', 'u': 'k', 'e': 'j', 'N': '0', 'I': '$', 'h': 'e'}
 "let g:VM_maps['i']                  = 'k'
 "let g:VM_maps['I']                  = 'K'
 "let g:VM_maps['Find Under']         = '<C-k>'
 "let g:VM_maps['Find Subword Under'] = '<C-k>'
 "let g:VM_maps['Find Next']          = ''
 "let g:VM_maps['Find Prev']          = ''
-let g:VM_maps['Remove Region']      = 'q'
-let g:VM_maps['Skip Region']        = '<c-s>'
-let g:VM_maps["Undo"]               = 'l'
-let g:VM_maps["Redo"]               = '<C-r>'
+"let g:VM_maps['Remove Region']      = 'q'
+"let g:VM_maps['Skip Region']        = '<c-s>'
+"let g:VM_maps["Undo"]               = 'l'
+"let g:VM_maps["Redo"]               = '<C-r>'
 
 
 " ===
@@ -1059,7 +1059,8 @@ let maplocalleader=' '
 " ===
 " === vim-calendar
 " ===
-source ~/.cache/calendar.vim/credentials.vim
+source ~/.config/nvim/credentials.vim
+
 noremap \c :Calendar -position=here<CR>
 noremap \\ :Calendar -view=clock -position=here<CR>
 let g:calendar_google_calendar = 1
