@@ -579,7 +579,7 @@ Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
 " Plug 'makerj/vim-pdf'
 "Plug 'xolox/vim-session'
 "Plug 'xolox/vim-misc' " vim-session dep
-
+"===
 " Dependencies
 " Plug 'MarcWeber/vim-addon-mw-utils'
 " Plug 'kana/vim-textobj-user'
@@ -755,6 +755,8 @@ autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 "=======
 "kite设置"
 "=============
+
+"kite设置"
 "禁用kite自动补全
 let g:kite_completions=0
 "let g:kite_snippets=0
@@ -762,20 +764,16 @@ let g:kite_completions=0
 let g:kite_supported_languages = ['*']
 "退出摘要
 let g:kite_tab_complete=1
-set completeopt+=menuone
-set completeopt+=noselect
+"set completeopt+=menuone
 set completeopt-=menu
-"set completeopt-=noinsert
-set completeopt+=preview
+set completeopt-=noinsert
+set completeopt-=preview
 autocmd completedone * if !pumvisible() | pclose | endif
 set belloff+=ctrlg   
 let g:kite_documentation_continual=0
 let g:kite_previous_placeholder = '<c-p>'
 let g:kite_next_placeholder = '<c-n>'
-nmap <silent> <buffer> gk <Plug>(kite-docs)
-set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
-set laststatus=2  " always display the status line
-
+nmap <silent> <buffer> gt <Plug>(kite-docs)
 
 
 
@@ -865,10 +863,10 @@ let g:Lf_PreviewCode = 1
 let g:Lf_ShowHidden = 1
 let g:Lf_ShowDevIcons = 1
 let g:Lf_CommandMap = {
-\   '<C-k>': ['<C-u>'],
-\   '<C-j>': ['<C-e>'],
-\   '<C-]>': ['<C-v>'],
-\   '<C-p>': ['<C-n>'],
+\   '<C-k>': ['<C-k>'],
+\   '<C-j>': ['<C-j>'],
+\   '<C-]>': ['<C-n>'],
+\   '<C-p>': ['<C-p>'],
 \}
 let g:Lf_UseVersionControlTool = 0
 let g:Lf_IgnoreCurrentBufferName = 1
@@ -922,10 +920,10 @@ let g:undotree_WindowLayout = 2
 let g:undotree_DiffpanelHeight = 8
 let g:undotree_SplitWidth = 24
 function g:Undotree_CustomMap()
-	nmap <buffer> j <plug>UndotreeNextState
-	nmap <buffer> k <plug>UndotreePreviousState
-	nmap <buffer> J 5<plug>UndotreeNextState
-	nmap <buffer> K 5<plug>UndotreePreviousState
+	nmap <buffer> k <plug>UndotreeNextState
+	nmap <buffer> j <plug>UndotreePreviousState
+	nmap <buffer> K 5<plug>UndotreeNextState
+	nmap <buffer> J 5<plug>UndotreePreviousState
 endfunc
 
 "#################################注释插件#######################################
