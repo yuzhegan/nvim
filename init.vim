@@ -45,6 +45,8 @@ source ~/.config/nvim/_machine_specific.vim
 "set clipboard=unnamedplus
 let &t_ut=''
 set autochdir
+"让vim配置立即生效
+"autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
 
 " ===
@@ -267,13 +269,13 @@ noremap <down> :res -5<CR>
 noremap <left> :vertical resize-5<CR>
 noremap <right> :vertical resize+5<CR>
 
-noremap sh <C-w>t<C-w>K
+noremap su <C-w>t<C-w>K
 " Place the two screens up and down
 noremap sv <C-w>t<C-w>H
 " Place the two screens side by side
 
 " Rotate screens
-noremap srh <C-w>b<C-w>K
+noremap sru <C-w>b<C-w>K
 noremap srv <C-w>b<C-w>H
 
 " Press <SPACE> + q to close the window below the current window
