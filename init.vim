@@ -398,6 +398,9 @@ endfunc
 call plug#begin('~/.config/nvim/plugged')
 
 " Plug 'LoricAndre/fzterm.nvim'
+Plug 'jpalardy/vim-slime', { 'for': 'python' }
+Plug 'hanschen/vim-ipython-cell', { 'for': 'python' }
+
 
 " Testing my own plugin
 " Plug 'theniceboy/vim-calc'
@@ -622,11 +625,32 @@ hi NonText ctermfg=gray guifg=grey10
 
 " ===================== Start of Plugin Settings =====================
 
+" ===
+" === ipython-cell.vim
+" ===
+" escape
+nnoremap ,q o<escape>^i# %%<CR>
+inoremap ,q <CR><escape>^i# %%<CR>
+let g:ipython_cell_prefer_external_copy = 1
+"let g:ipython_cell_regex = 1
+"let g:ipython_cell_tag = '# %%( [^[].*)?'
+
+
+source ~/.config/nvim/after/ftplugin/python.vim
+augroup ipython_cell_highlight
+    autocmd!
+    autocmd ColorScheme * highlight IPythonCell ctermbg=238 guifg=darkgrey guibg=#444d56
+augroup END
+nnoremap <Leader>x :SlimeSend1 matplotlib.pyplot.close('all')<CR>
+
+
 
 " ===
 " === eleline.vim
 " ===
 let g:airline_powerline_fonts = 0
+
+
 
 
 " ==
