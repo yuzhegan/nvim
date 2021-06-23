@@ -2,6 +2,36 @@
 "------------------------------------------------------------------------------
 " slime configuration 
 "------------------------------------------------------------------------------
+"let g:slime_target = 'neovim'
+"let g:slime_dont_ask_default = 1
+
+"function! IPythonOpen()
+    "" open a new terminal in vertical split and run IPython
+		"vnew|call termopen('tmux split-window -h')
+		""exec "tmux split-window -h"
+    ""vnew|call termopen('ipython --matplotlib')
+		""exec ipython --matplotlib<CR>
+		""exec "tmux select-pane -L"
+		"file ipython " name the new buffer
+
+    "" set slime target to new terminal
+    "if !exists('g:slime_default_config')
+        "let g:slime_default_config = {}
+    "end
+    "let g:slime_default_config['jobid'] = b:terminal_job_id
+
+    "wincmd p " switch to the previous buffer
+"endfunction
+
+"" map to start ipython in current file directory
+"nnoremap <leader>st :call IPythonOpen()<CR>
+
+" Change automatically current directory to open file directory
+autocmd BufEnter * silent! lcd %:p:h
+
+"" map to start ipython in current file directory
+nnoremap \E :execute 'SlimeSend1 cd 'fnameescape(expand('%:p:h'))<CR>:execute 'SlimeSend1 c'<CR>:SlimeSend1 ipython --matplotlib<CR>
+
 " always use tmux
 let g:slime_target = 'tmux'
 

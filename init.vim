@@ -630,7 +630,7 @@ hi NonText ctermfg=gray guifg=grey10
 " ===
 " escape
 nnoremap ,q o<escape>^i# %%<CR>
-inoremap ,q <CR><escape>^i# %%<CR>
+inoremap ,q <escape>o<escape>^i# %%<CR>
 let g:ipython_cell_prefer_external_copy = 1
 "let g:ipython_cell_regex = 1
 "let g:ipython_cell_tag = '# %%( [^[].*)?'
@@ -641,7 +641,7 @@ augroup ipython_cell_highlight
     autocmd!
     autocmd ColorScheme * highlight IPythonCell ctermbg=238 guifg=darkgrey guibg=#444d56
 augroup END
-nnoremap <Leader>x :SlimeSend1 matplotlib.pyplot.close('all')<CR>
+
 
 
 
@@ -1501,15 +1501,17 @@ let g:agit_no_default_mappings = 1
 " ======
  autocmd BufNewFile *py exec ":call SetPythonTitle()"
  func SetPythonTitle()
-  call setline(1,"# -*- coding: utf-8 -*-")
+  "call setline(1,"# -*- coding: utf-8 -*-")
+  call setline(1,"# encoding='utf-8")
   call append(line("."), "")
   call append(line(".")+1, "\# @Time: ".strftime("%Y-%m-%d",localtime()))
   call append(line(".")+2, "\# @File: ".("%"))
-  call append(line(".")+3, "#!/usr/bin/env python3.7")
-  "call append(line(".")+4, "\# @Description: ")
-  call append(line(".")+4, "import io")
-  call append(line(".")+5, "import sys")
-  call append(line(".")+6, "sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf-8')")
+	call append(line(".")+3, "#!/usr/bin/env")
+	"call append(line(".")+4, "\# @Description: ")
+  "call append(line(".")+3, "import io")
+  "call append(line(".")+4, "import sys")
+  "call append(line(".")+5, "sys.path.append(pwd)")
+  "call append(line(".")+6, "sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf-8')")
  endfunc
  
 "新建文件后，自动定位到文件末尾
