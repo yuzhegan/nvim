@@ -194,6 +194,17 @@
 		"elixir": "mix_format",
 		"eelixir": "mix_format"
 	},
+	"todolist.dateFormat": {
+		"type": "string",
+		"default": "YYYY-MM-DD HH:mm",
+		"description": "dates format"
+	},
+	"todolist.monitor": {
+		"type": "boolean",
+		"default": false,
+		"description": "monitor the todolist and remind you at the time"
+	},
+
 	"languageserver": {
 		"lua": {
 			"command": "lua-lsp",
@@ -234,3 +245,5 @@
 		}
 	}
 }
+
+

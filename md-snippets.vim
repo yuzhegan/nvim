@@ -1,4 +1,20 @@
 "autocmd Filetype markdown map <leader>w yiWi[<esc>Ea](<esc>pa)
+autocmd Filetype org inoremap <buffer> ,f <Esc>/<++><CR>:nohlsearch<CR>"_c4l
+autocmd Filetype org inoremap <buffer> ,w <Esc>/ <++><CR>:nohlsearch<CR>"_c5l<CR>
+autocmd Filetype org inoremap <buffer> ,n ---<Enter><Enter>
+autocmd Filetype org inoremap <buffer> ,b **** <++><Esc>F*hi
+autocmd Filetype org inoremap <buffer> ,s ~~~~ <++><Esc>F~hi
+autocmd Filetype org inoremap <buffer> ,i ** <++><Esc>F*i
+autocmd Filetype org inoremap <buffer> ,d `` <++><Esc>F`i
+autocmd Filetype org inoremap <buffer> ,c ```<Enter><++><Enter>```<Enter><Enter><++><Esc>4kA
+autocmd Filetype org inoremap <buffer> ,m - [ ] 
+autocmd Filetype org inoremap <buffer> ,p [[][<++>]]<++><Esc>F[hi
+autocmd Filetype org inoremap <buffer> ,a [](<++>) <++><Esc>F[a
+autocmd Filetype org inoremap <buffer> ,1 *<Space><Enter><++><Esc>kA
+autocmd Filetype org inoremap <buffer> ,2 **<Space><Enter><++><Esc>kA
+autocmd Filetype org inoremap <buffer> ,3 ***<Space><Enter><++><Esc>kA
+autocmd Filetype org inoremap <buffer> ,4 ****<Space><Enter><++><Esc>kA
+autocmd Filetype org inoremap <buffer> ,l --------<Enter>
 autocmd Filetype markdown inoremap <buffer> ,f <Esc>/<++><CR>:nohlsearch<CR>"_c4l
 autocmd Filetype markdown inoremap <buffer> ,w <Esc>/ <++><CR>:nohlsearch<CR>"_c5l<CR>
 autocmd Filetype markdown inoremap <buffer> ,n ---<Enter><Enter>

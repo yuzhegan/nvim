@@ -140,7 +140,8 @@ noremap ; :
 noremap Q :q<CR>
 noremap <C-q> :qa<CR>
 noremap S :w<CR>
-
+"执行宏命令
+noremap 0 @
 " Open the vimrc file anytime
 noremap <LEADER>rc :e ~/.config/nvim/init.vim<CR>
 noremap <LEADER>rv :e ~/.vimrc<CR>
@@ -299,7 +300,8 @@ noremap tml :+tabmove<CR>
 " ===
 " === Markdown Settings
 " ===
-" Snippets
+au BufRead,BufNewFilE *.org    set filetype=org
+"Snippets
 source ~/.config/nvim/md-snippets.vim
 " auto spell
 autocmd BufRead,BufNewFile *.md setlocal spell
@@ -315,6 +317,7 @@ nnoremap \t :tabe<CR>:-tabmove<CR>:term sh -c 'st'<CR><C-\><C-N>:q<CR>
 noremap <LEADER>/ :set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>
 
 " Press space twice to jump to the next '<++>' and edit it
+inoremap .k <++>
 noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 
 " Spelling Check with <space>sc
@@ -373,6 +376,8 @@ func! CompileRunGcc()
 		silent! exec "!".g:mkdp_browser." % &"
 	elseif &filetype == 'markdown'
 		exec "MarkdownPreview"
+	"elseif &filetype == 'vimwiki'
+		"exec "MarkdownPreview"
 	elseif &filetype == 'tex'
 		silent! exec "VimtexStop"
 		silent! exec "VimtexCompile"
@@ -401,7 +406,10 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'jpalardy/vim-slime', { 'for': 'python' }
 Plug 'hanschen/vim-ipython-cell', { 'for': 'python' }
 
-
+" vimwiki
+"Plug 'vimwiki/vimwiki',
+Plug 'tpope/vim-markdown'
+Plug 'h2ero/vim-markdown-wiki'
 " Testing my own plugin
 " Plug 'theniceboy/vim-calc'
 
@@ -626,7 +634,21 @@ hi NonText ctermfg=gray guifg=grey10
 " ===================== Start of Plugin Settings =====================
 
 " ===
-" === ipython-cell.vim
+" === vimwiki.vim
+" ===
+let g:mwikiTableAlign = "left"
+let g:mwikis = [ {'path':'~/vimwiki/'} ]
+
+"au BufRead,BufNewFilE *.md    set filetype=markdown
+"au BufRead,BufNewFilE *.vimwiki    set filetype=markdown
+"let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      "\ 'syntax': 'markdown', 'ext': '.md'}]
+
+nmap <LEADER>to :e ~/org-notes/index.org<CR>
+
+
+" ===
+" === ipython-cell.vim install tmux
 " ===
 " escape
 nnoremap ,q o<escape>^i# %%<CR>
@@ -679,6 +701,7 @@ nnoremap <LEADER>g= :GitGutterNextHunk<CR>
 " ===
 let g:coc_global_extensions = [
 	\ 'coc-kite',
+	\ 'coc-todolist',
 	\ 'coc-css',
 	\ 'coc-diagnostic',
 	\ 'coc-eslint',
@@ -764,17 +787,17 @@ endfunction
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 " coctodolist
 nmap <leader>aw  <Plug>(coc-codeaction-selected)w
-" nnoremap <leader>tn :CocCommand todolist.create<CR>
-" nnoremap <leader>tl :CocList todolist<CR>
+nnoremap <leader>tn :CocCommand todolist.create<CR>
+nnoremap <leader>tl :CocList todolist<CR>
 " coc-tasks
-" nnoremap <leader>tu :CocCommand todolist.download<CR>:CocCommand todolist.upload<CR>
+ nnoremap <leader>tu :CocCommand todolist.download<CR>:CocCommand todolist.upload<CR>
 noremap <silent> <leader>ts :CocList tasks<CR>
 " coc-snippets
-imap <C-w> <Plug>(coc-snippets-expand)
-vmap <C-w> <Plug>(coc-snippets-select)
-let g:coc_snippet_next = '<c-w>'
-let g:coc_snippet_prev = '<c-n>'
-imap <C-e> <Plug>(coc-snippets-expand-jump)
+imap <C-i> <Plug>(coc-snippets-expand)
+vmap <C-i> <Plug>(coc-snippets-select)
+let g:coc_snippet_next = '<c-h>'
+let g:coc_snippet_prev = '<c-p>'
+imap <C-i> <Plug>(coc-snippets-expand-jump)
 let g:snips_author = 'yuzhe'
 autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 
@@ -798,7 +821,7 @@ autocmd completedone * if !pumvisible() | pclose | endif
 set belloff+=ctrlg   
 let g:kite_documentation_continual=0
 let g:kite_previous_placeholder = '<c-p>'
-let g:kite_next_placeholder = '<c-n>'
+let g:kite_next_placeholder = '<c-h>'
 nmap <silent> <buffer> gt <Plug>(kite-docs)
 
 
@@ -823,7 +846,7 @@ let g:mkdp_auto_start = 0
 
 " 指定预览主题，默认Github
 let g:mkdp_markdown_css=''
-
+" 打开todolist
 nmap <silent> \d <Plug>StopMarkdownPreview    " 普通模式
 
 
@@ -1115,24 +1138,24 @@ augroup calendar-mappings
 		"\ {'name': 'Diary', 'path': '~/.config/nvim/notes/daily/diary', 'ext': 'md'},
 		"\]
 
-let g:calendar_diary = "~/.config/nvim/notes"  " 设置日记的存储路径
-let g:calendar_monday = 1           " 以星期一为开始
-let g:calendar_focus_today = 1      " 光标在当天的日期上
-"let g:calendar_mark = 'left-fit' "可以让*和数字可靠近
-let g:calendar_mark = 'right' "上面设置后在昨天写日志，修改成right正常
-let g:calendar_mruler = '一月,二月,三月,四月,五月,六月,七月,八月,九月,十月,十一月,十二月'     " 中文，可自行修改
-let g:calendar_wruler = '日 一 二 三 四 五 六'
-let g:calendar_navi_label = '往前,今日,往后'
-let g:calendar_focus_today = 1
-let g:calendar_navi = 'both'
-let g:calendar_monday = 1
-let g:calendar_weeknm = 1 " WK01
-let g:calendar_weeknm = 2 " WK01
-let g:calendar_weeknm = 3 " WK01
-let g:calendar_weeknm = 4 " WK01
-let g:calendar_datetime = 'title'
+"let g:calendar_diary = "~/.config/nvim/notes"  " 设置日记的存储路径
+"let g:calendar_monday = 1           " 以星期一为开始
+"let g:calendar_focus_today = 1      " 光标在当天的日期上
+""let g:calendar_mark = 'left-fit' "可以让*和数字可靠近
+"let g:calendar_mark = 'right' "上面设置后在昨天写日志，修改成right正常
+"let g:calendar_mruler = '一月,二月,三月,四月,五月,六月,七月,八月,九月,十月,十一月,十二月'     " 中文，可自行修改
+"let g:calendar_wruler = '日 一 二 三 四 五 六'
+"let g:calendar_navi_label = '往前,今日,往后'
+"let g:calendar_focus_today = 1
+"let g:calendar_navi = 'both'
+"let g:calendar_monday = 1
+"let g:calendar_weeknm = 1 " WK01
+"let g:calendar_weeknm = 2 " WK01
+"let g:calendar_weeknm = 3 " WK01
+"let g:calendar_weeknm = 4 " WK01
+"let g:calendar_datetime = 'title'
 
-noremap ca :Calendar<CR>              " 快捷键，默认 <leader>cal,水平方向：<leader>caL
+"noremap ca :Calendar<CR>              " 快捷键，默认 <leader>cal,水平方向：<leader>caL
 
 " ===
 " === vim-go
@@ -1508,10 +1531,10 @@ let g:agit_no_default_mappings = 1
   call append(line(".")+2, "\# @File: ".("%"))
 	call append(line(".")+3, "#!/usr/bin/env")
 	"call append(line(".")+4, "\# @Description: ")
-  "call append(line(".")+3, "import io")
+	call append(line(".")+4, "from icecream import ic io")
   "call append(line(".")+4, "import sys")
   "call append(line(".")+5, "sys.path.append(pwd)")
-  "call append(line(".")+6, "sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf-8')")
+	"call append(line(".")+6, "sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf-8')")
  endfunc
  
 "新建文件后，自动定位到文件末尾
