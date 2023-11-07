@@ -36,7 +36,7 @@ Plug 'h2ero/vim-markdown-wiki'
 " Plug 'nvim-treesitter/playground'
 
 " Pretty Dress
-Plug 'theniceboy/nvim-deus'
+Plug 'yuzhegan/nvim-deus'
 "Plug 'arzg/vim-colors-xcode'
 "Plug 'ajmwagar/vim-deus'
 "Plug 'spf3000/skeletor.vim'
